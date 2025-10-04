@@ -1,0 +1,257 @@
+$rich-black: #02111bff;
+$onyx: #3f4045ff;
+$raisin-black: #30292fff;
+$cadet-gray: #9fb1bcff;
+$pale-dogwood: #c9ada1ff;
+
+$gradient-top: linear-gradient(0deg, #02111bff, #3f4045ff, #30292fff, #9fb1bcff, #c9ada1ff);
+$gradient-right: linear-gradient(90deg, #02111bff, #3f4045ff, #30292fff, #9fb1bcff, #c9ada1ff);
+$gradient-bottom: linear-gradient(180deg, #02111bff, #3f4045ff, #30292fff, #9fb1bcff, #c9ada1ff);
+$gradient-left: linear-gradient(270deg, #02111bff, #3f4045ff, #30292fff, #9fb1bcff, #c9ada1ff);
+$gradient-top-right: linear-gradient(45deg, #02111bff, #3f4045ff, #30292fff, #9fb1bcff, #c9ada1ff);
+$gradient-bottom-right: linear-gradient(135deg, #02111bff, #3f4045ff, #30292fff, #9fb1bcff, #c9ada1ff);
+$gradient-top-left: linear-gradient(225deg, #02111bff, #3f4045ff, #30292fff, #9fb1bcff, #c9ada1ff);
+$gradient-bottom-left: linear-gradient(315deg, #02111bff, #3f4045ff, #30292fff, #9fb1bcff, #c9ada1ff);
+$gradient-radial: radial-gradient(#02111bff, #3f4045ff, #30292fff, #9fb1bcff, #c9ada1ff);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: $rich-black;
+  color: $cadet-gray;
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar app"
+    "footer footer";
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+}
+
+// HEADER
+header {
+  grid-area: header;
+  background: $raisin-black;
+  padding: 1rem;
+
+  nav h2 {
+    color: $pale-dogwood;
+    font-size: 1.5rem;
+  }
+}
+
+// SIDEBAR
+#sidebar {
+  grid-area: sidebar;
+  background: $onyx;
+  padding: 1rem;
+
+  .projects {
+    h3 {
+      margin-bottom: 0.5rem;
+      color: $pale-dogwood;
+    }
+
+    ul {
+      list-style: none;
+
+      li {
+        padding: 0.5rem;
+        cursor: pointer;
+        border-radius: 5px;
+
+        &:hover {
+          background: $raisin-black;
+        }
+
+        &.active {
+          background: $pale-dogwood;
+          color: $rich-black;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .add-project {
+      margin-top: 1rem;
+      background: transparent;
+      border: 1px solid $pale-dogwood;
+      color: $pale-dogwood;
+      padding: 0.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &:hover {
+        background: $pale-dogwood;
+        color: $rich-black;
+      }
+    }
+  }
+}
+
+// MAIN
+#app {
+  grid-area: app;
+  padding: 1.5rem;
+
+  .todo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h1 {
+      color: $pale-dogwood;
+    }
+
+    .add-todo {
+      background: $pale-dogwood;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      color: $rich-black;
+      cursor: pointer;
+
+      &:hover {
+        background: $cadet-gray;
+      }
+    }
+  }
+
+  .todo-list {
+    margin-top: 1rem;
+    list-style: none;
+
+    li {
+      background: $raisin-black;
+      margin-bottom: 0.75rem;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .todo-title {
+        font-weight: bold;
+      }
+
+      button
+      {
+        padding: 8px 20px;
+        background-color: $onyx;
+        color: $pale-dogwood;
+        border: none;
+        border-radius: 6px;
+      }
+
+      .todo-date {
+        font-size: 0.85rem;
+        color: $cadet-gray;
+      }
+    }
+  }
+}
+
+// FOOTER
+footer {
+  grid-area: footer;
+  background: $raisin-black;
+  text-align: center;
+  padding: 0.5rem;
+  color: $cadet-gray;
+  font-size: 0.85rem;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba($rich-black, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+  &.hidden {
+    display: none;
+  }
+}
+
+.modal-content {
+  background: $raisin-black;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0px 4px 15px rgba($onyx, 0.6);
+  color: $cadet-gray;
+  position: relative;
+
+  h2 {
+    margin-bottom: 1rem;
+    color: $pale-dogwood;
+  }
+}
+
+.close-btn {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: $cadet-gray;
+
+  &:hover {
+    color: $pale-dogwood;
+  }
+}
+
+// Form styles
+#todo-form {
+  .form-group {
+    margin-bottom: 1rem;
+
+    label {
+      display: block;
+      margin-bottom: 0.25rem;
+      color: $pale-dogwood;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: 1px solid $cadet-gray;
+      background: $onyx;
+      color: $pale-dogwood;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+  }
+
+  .submit-btn {
+    width: 100%;
+    background: $pale-dogwood;
+    color: $rich-black;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+
+    &:hover {
+      background: $cadet-gray;
+    }
+  }
+}

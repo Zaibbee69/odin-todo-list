@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To-Do List</title>
+
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <h2>Lazy Tasks</h2>
+  </nav>
+</header>
+
+<section id="sidebar">
+  <div class="projects">
+    <h3>Projects</h3>
+    <ul>
+      <li class="active">Default</li>
+      <li>Work</li>
+      <li>Personal</li>
+    </ul>
+    <button class="add-project">+ Add Project</button>
+  </div>
+</section>
+
+<main id="app">
+  <div class="todo-header">
+    <h1>Todos</h1>
+    <button class="add-todo">+ Add Todo</button>
+  </div>
+  <ul class="todo-list">
+    <li>
+      <div class="todo-title">Finish Assignment</div>
+      <div>
+        <button class="todo-details-btn">Details</button>
+        <button class="todo-delete-btn">Delete</button>
+      </div>
+      <div class="todo-date">Due: Sep 30</div>
+    </li>
+    <li>
+      <div class="todo-title">Buy Groceries</div>
+      <div class="todo-date">Due: Oct 2</div>
+    </li>
+  </ul>
+</main>
+
+<footer>
+  <p>&copy; 2025 Lazy Tasks</p>
+</footer>
+
+<div class="modal hidden" id="todo-modal">
+  <div class="modal-content">
+    <span class="close-btn" id="close-modal">&times;</span>
+    <h2>Add Todo</h2>
+    <form id="todo-form">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" required />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" name="description"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="dueDate">Due Date</label>
+        <input type="date" id="dueDate" name="dueDate" required />
+      </div>
+
+      <div class="form-group">
+        <label for="priority">Priority</label>
+        <select id="priority" name="priority">
+          <option value="1">High</option>
+          <option value="2">Medium</option>
+          <option value="3">Low</option>
+        </select>
+      </div>
+
+      <button type="submit" class="submit-btn">Save Todo</button>
+    </form>
+  </div>
+</div>
+
+
+</body>
+</html>
